@@ -21,6 +21,19 @@ Single-page "under construction" site for Axle Studios Pte Ltd, built with [Astr
 - `src/components/` — `Lockup` (mark + wordmark), `Mark`, `MarkPaths` (shared gradients), `Blueprint` (hero illustration) and `ThemeToggle`.
 - `public/` — favicons, Apple touch icon and the social preview image (`og.png`), all generated from the same mark geometry.
 
+## Icons
+
+Icons are Font Awesome Pro SVGs, inlined at build time by `src/components/Icon.astro` (`<Icon name="envelope" />`). Only the icons the site uses are copied into `src/icons/`; the Font Awesome package itself is never added to the repo.
+
+To add one, with the Font Awesome folder on your machine:
+
+```sh
+bun run icon wrench bolt          # Thin style (the site's default)
+STYLE=light bun run icon wrench   # any style folder: light, regular, solid, brands, sharp-thin...
+```
+
+If the Font Awesome folder moves, point `FA_DIR` at its `svgs` folder.
+
 ## Deployment
 
 Every push to `main` runs `.github/workflows/deploy.yml`, which builds the site with Bun and publishes `dist/` to GitHub Pages (Settings → Pages → Source must be "GitHub Actions"). The workflow can also be run by hand from the Actions tab.

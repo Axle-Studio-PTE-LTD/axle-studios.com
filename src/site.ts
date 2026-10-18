@@ -21,22 +21,34 @@ export const abang = {
   live: true,
 };
 
-export const founders = [
+/** Social links shown as icon buttons on each founder card. */
+export type Social = { type: 'website' | 'linkedin' | 'telegram' | 'instagram' | 'email'; url: string };
+
+export const founders: { name: string; role: string; focus: string; socials: Social[] }[] = [
   {
     name: 'David',
     role: 'Founder',
     focus: 'Business direction, finance, growth and sales.',
-    /** Optional personal site, shown as a link on the card. */
-    url: 'https://tandavid.com',
+    socials: [
+      { type: 'website', url: 'https://tandavid.com' },
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/tandavid8765876' },
+      { type: 'telegram', url: 'https://t.me/riceandegg' },
+    ],
   },
   {
     name: 'Long Ju',
     role: 'Co-founder',
     focus: 'Engineering, product and search.',
+    socials: [
+      { type: 'website', url: 'https://babasama.com' },
+      { type: 'linkedin', url: 'https://www.linkedin.com/in/ju-long/' },
+      { type: 'instagram', url: 'https://instagram.com/babasama._' },
+    ],
   },
   {
     name: 'Andy',
     role: 'Co-founder',
     focus: 'Marketing, brand awareness and customer growth.',
+    socials: [{ type: 'email', url: 'mailto:andychong.official@gmail.com' }],
   },
 ];

@@ -1,0 +1,24 @@
+---
+/**
+ * Inline SVG icon from src/icons/ (Font Awesome files copied in with `bun run icon <name>`).
+ * Inherits the text colour and sizes to 1em, so it follows font-size and both themes.
+ *   <Icon name="envelope" />
+ *   <Icon name="wrench" label="Repairs" />   // meaningful icon, read out by screen readers
+ */
+interface Props {
+  name: string;
+  class?: string;
+  /** Accessible name. Leave out for decorative icons next to text. */
+  label?: string;
+}
+
+const icons = import.meta.glob<string>('../icons/*.svg', { query: '?raw', import: 'default', eager: true });
+const { name, class: className, label } = Astro.props;
+const raw = icons[`../icons/${name}.svg`];
+if (!raw) throw new Error(`Icon "${name}" not found. Add it with: bun run icon ${name}`);
+
+const a11y = label ? `role="img" aria-label="${label.replace(/"/g, '&quot;')}"` : 'aria-hidden="true" focusable="false"';
+const svg = raw.replace('<svg ', `<svg class="fa-icon${className ? ` ${className}` : ''}" ${a11y} `);
+---
+
+<Fragment set:html={svg} />
