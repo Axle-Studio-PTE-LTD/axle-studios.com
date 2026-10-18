@@ -4,6 +4,7 @@ import Lockup from '../components/Lockup.astro';
 import Blueprint from '../components/Blueprint.astro';
 import ThemeToggle from '../components/ThemeToggle.astro';
 import Timeline from '../components/Timeline.astro';
+import Icon from '../components/Icon.astro';
 import { site, abang, founders } from '../site';
 import { home } from '../lib/paths';
 
@@ -16,6 +17,14 @@ const nav = [
   { href: '#founders', label: 'Founders' },
   { href: '#contact', label: 'Contact' },
 ];
+
+const socialMeta = {
+  website: { icon: 'globe', label: 'Website' },
+  linkedin: { icon: 'linkedin-in', label: 'LinkedIn' },
+  telegram: { icon: 'telegram', label: 'Telegram' },
+  instagram: { icon: 'instagram', label: 'Instagram' },
+  email: { icon: 'envelope', label: 'Email' },
+} as const;
 
 const initials = (name: string) =>
   name
@@ -76,17 +85,17 @@ const initials = (name: string) =>
         </div>
         <ul class="features">
           <li class="feature" data-reveal style="--d: 0.00s">
-            <span class="feature-num">A</span>
+            <span class="feature-num"><Icon name="scale-balanced" /></span>
             <h3>We do the comparing</h3>
             <p>Abang puts repair companies side by side, so you can see who's cheapest and who's best qualified for the job at a glance.</p>
           </li>
           <li class="feature" data-reveal style="--d: 0.12s">
-            <span class="feature-num">B</span>
+            <span class="feature-num"><Icon name="screwdriver-wrench" /></span>
             <h3>Every repair, one place</h3>
             <p>Plumbing, electrical, aircon, handyman and appliance repair in one search. Filter by what you need and compare in a few taps.</p>
           </li>
           <li class="feature" data-reveal style="--d: 0.24s">
-            <span class="feature-num">C</span>
+            <span class="feature-num"><Icon name="mobile-screen" /></span>
             <h3>Built for young adults</h3>
             <p>We're the young adults now taking charge of repairs at home. Abang makes it as easy as the apps we already use every day.</p>
           </li>
@@ -145,12 +154,21 @@ const initials = (name: string) =>
                   <h3 class="founder-name">{f.name}</h3>
                   <p class="founder-role">{f.role}</p>
                   <p class="founder-focus">{f.focus}</p>
-                  {'url' in f && f.url && (
-                    <a class="founder-link" href={f.url} target="_blank" rel="noopener">
-                      {f.url.replace(/^https?:\/\//, '')}
-                      <span aria-hidden="true">↗</span>
-                    </a>
-                  )}
+                  <ul class="founder-socials">
+                    {f.socials.map((so) => (
+                      <li>
+                        <a
+                          class="social"
+                          href={so.url}
+                          {...(so.type === 'email' ? {} : { target: '_blank', rel: 'noopener' })}
+                          aria-label={`${f.name} on ${socialMeta[so.type].label}`}
+                          title={socialMeta[so.type].label}
+                        >
+                          <Icon name={socialMeta[so.type].icon} />
+                        </a>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </li>
             ))
@@ -171,6 +189,7 @@ const initials = (name: string) =>
           {
             site.email && (
               <a class="button" href={`mailto:${site.email}`}>
+                <Icon name="envelope" class="button-icon" />
                 {site.email}<span aria-hidden="true">→</span>
               </a>
             )
