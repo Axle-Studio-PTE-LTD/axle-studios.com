@@ -35,6 +35,9 @@
   --mk-r4: light-dark(#101010, #181818);
   --sheen: light-dark(rgba(255, 255, 255, 0.28), rgba(255, 255, 255, 0.16));
   --hl-glint: light-dark(#b9b9b6, #ffffff);
+  /* Pure black/white for third-party logos: LinkedIn only allows blue, black or white. */
+  --brand-ink: light-dark(#000000, #ffffff);
+  --brand-ink-inverse: light-dark(#ffffff, #000000);
   --glint-glow: light-dark(rgba(12, 12, 12, 0.35), rgba(255, 255, 255, 0.75));
   --btn-glint: light-dark(rgba(255, 255, 255, 0.32), rgba(10, 10, 10, 0.16));
 }
@@ -510,21 +513,21 @@ html { scroll-behavior: smooth; }
   position: relative;
   display: grid;
   place-items: center;
-  width: 2.25rem;
-  height: 2.25rem;
+  width: 2.5rem;
+  height: 2.5rem;
   border: 1px solid var(--line);
   border-radius: 50%;
   overflow: hidden;
-  color: var(--ink-2);
-  font-size: 0.95rem;
+  color: var(--brand-ink);
+  font-size: 1.15rem;
   text-decoration: none;
   transition: color 0.25s ease, background-color 0.25s ease, border-color 0.25s ease;
 }
 .social:hover,
 .social:focus-visible {
-  color: var(--bg);
-  background: var(--ink);
-  border-color: var(--ink);
+  color: var(--brand-ink-inverse);
+  background: var(--brand-ink);
+  border-color: var(--brand-ink);
 }
 
 /* Contact */
