@@ -3,7 +3,7 @@
  * Mark + wordmark, laid out exactly as in brand/brand.jpeg.
  * `full` adds the "STUDIOS PTE LTD" line; `compact` centres "AXLE" on the mark.
  */
-import { LETTERS, LOCKUP, WORD } from '../lib/brand';
+import { LETTERS, LOCKUP, TAGLINE } from '../lib/brand';
 import MarkPaths from './MarkPaths.astro';
 
 interface Props {
@@ -29,28 +29,12 @@ const wordY = variant === 'full' ? LOCKUP.wordY : LOCKUP.wordYCompact;
   <MarkPaths id={id} />
   <g transform={`translate(${LOCKUP.wordX} ${wordY})`} fill="currentColor">
     <path d={LETTERS}></path>
-    {
-      variant === 'full' && (
-        <text
-          x={WORD.sub.x}
-          y={WORD.sub.y}
-          textLength={WORD.sub.length}
-          lengthAdjust="spacing"
-          font-size={WORD.sub.size}
-          font-weight="300"
-        >
-          {WORD.sub.text}
-        </text>
-      )
-    }
+    {variant === 'full' && <path d={TAGLINE}></path>}
   </g>
 </svg>
 
 <style>
   .lockup {
     overflow: visible;
-  }
-  text {
-    font-family: inherit;
   }
 </style>
