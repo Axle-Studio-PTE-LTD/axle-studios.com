@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="342" height="264.3" viewBox="0 0 342 264.3">
+  <title>Axle Studios mark (for light backgrounds)</title>
+  <defs>
+    <linearGradient id="grad-left" gradientUnits="userSpaceOnUse" x1="178" y1="18" x2="58" y2="254"><stop offset="0" stop-color="#4a4a4a"/><stop offset="0.36" stop-color="#1c1c1c"/><stop offset="0.74" stop-color="#141414"/><stop offset="1" stop-color="#3b3b3b"/></linearGradient>
+    <linearGradient id="grad-right" gradientUnits="userSpaceOnUse" x1="236" y1="138" x2="334" y2="264"><stop offset="0" stop-color="#262626"/><stop offset="0.22" stop-color="#383838"/><stop offset="0.5" stop-color="#3c3c3c"/><stop offset="0.8" stop-color="#232323"/><stop offset="1" stop-color="#101010"/></linearGradient>
+  </defs>
+  <g id="mark">
+    <path id="leg-left" fill="url(#grad-left)" d="M155.1 12.4A27 27 0 0 1 201.6 14.3L223.6 55.5A52 52 0 0 1 221.8 107.6L153.6 216.3A81 81 0 0 1 85 254.2L0 254.2Z"/>
+    <path id="leg-right" fill="url(#grad-right)" d="M208 135.2L242.5 135.2A57 57 0 0 1 293.6 166.9L342 264.3L269.7 264.3A57 57 0 0 1 221.6 237.9L182.3 176.2Z"/>
+  </g>
+</svg>
